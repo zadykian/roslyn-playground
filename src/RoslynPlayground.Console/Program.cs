@@ -6,7 +6,8 @@ using Microsoft.CodeAnalysis.MSBuild;
 MSBuildLocator.RegisterDefaults();
 
 const string projectPath =
-	@"D:\Repository\postgres-marula\src\Postgres.Marula.DatabaseAccess\Postgres.Marula.DatabaseAccess.csproj";
+	"/Users/zadykian/Repository/personal" +
+	"/postgres-marula/src/Postgres.Marula.DatabaseAccess/Postgres.Marula.DatabaseAccess.csproj";
 
 using var workspace = MSBuildWorkspace.Create();
 var project = await workspace.OpenProjectAsync(projectPath);
