@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynPlayground.App", "RoslynPlayground.App\RoslynPlayground.App.csproj", "{16F8034A-66C8-4E8A-BAB8-20308D148037}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynPlayground.Console", "RoslynPlayground.Console\RoslynPlayground.Console.csproj", "{16F8034A-66C8-4E8A-BAB8-20308D148037}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

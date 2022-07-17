@@ -1,10 +1,12 @@
-﻿using System.Collections.Immutable;
+﻿
+
+using System.Collections.Immutable;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 
 const string projectPath =
-	"/Users/zadykian/Repository/personal" +
-	"/postgres-marula/src/Postgres.Marula.DatabaseAccess/Postgres.Marula.DatabaseAccess.csproj";
+	"/Users/zadykian/Repository" +
+	"/skipp-mobile-park/mobile-park/demo-origin/MP.Locator.MTS.Audit/MP.Locator.MTS.Audit.csproj";
 
 using var workspace = MSBuildWorkspace.Create();
 var project = await workspace.OpenProjectAsync(projectPath);
