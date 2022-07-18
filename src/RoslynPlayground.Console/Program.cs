@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using Microsoft.Build.Locator;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 
@@ -11,15 +12,23 @@ const string projectPath =
 
 using var workspace = MSBuildWorkspace.Create();
 var project = await workspace.OpenProjectAsync(projectPath);
-// var projectCompilation = await project.GetCompilationAsync();
+
+static bool ContainsClassDeclaration(SyntaxNode documentSyntaxRoot, string className)
+	=> documentSyntaxRoot
+		.DescendantNodes()
+		.OfType<ClassDeclarationSyntax>()
+		.Any(classDeclaration => classDeclaration.Identifier.Text == className);
 
 foreach (var document in project.Documents)
 {
-	var syntaxRoot = await document.GetSyntaxRootAsync();
-	var syntaxTree = await document.GetSyntaxTreeAsync();
+	var syntaxRoot = (await document.GetSyntaxRootAsync())!;
+	if (!ContainsClassDeclaration(syntaxRoot, "DefaultDatabaseServer"))
+	{
+		continue;
+	}
 
 	var semanticModel = await document.GetSemanticModelAsync();
-
+	
 	var methodInvocations = syntaxRoot
 		.DescendantNodes()
 		.OfType<InvocationExpressionSyntax>()
